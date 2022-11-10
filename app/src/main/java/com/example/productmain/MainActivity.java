@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         save = findViewById(R.id.save);
         save.setOnClickListener(this);
         initData();
+        ProductAdapter productAdapter = new ProductAdapter(this,productList);
+        ListView listView  = findViewById(R.id.lisProduct);
+        listView.setAdapter(productAdapter);
     }
 
     @Override
@@ -46,11 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String name = username.getText().toString();
                 int intPrice = Integer.parseInt(price.getText().toString());
                 productList.add(new Product(name,intPrice));
-               ProductAdapter productAdapter = new ProductAdapter(this,productList);
-               ListView listView  = findViewById(R.id.lisProduct);
-               listView.setAdapter(productAdapter);
                // Show thông báo thành công
-               Toast.makeText(this, "Lưu thành công sản phẩm" + username,Toast.LENGTH_LONG).show();
+               Toast.makeText(this, "Lưu thành công sản phẩm" + name,Toast.LENGTH_LONG).show();
 //               Intent intent = new Intent(this,ListProductActivity.class);
 //               intent.putExtra("username",username.getText().toString());
 //               intent.putExtra("price",price.getText().toString());
